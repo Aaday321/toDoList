@@ -6,6 +6,11 @@ import PlayerForm from './Player/PlayerForm';
 import PlayerList from './Player/PlayerList';
 import PlayerSingle from './Player/PlayerSingle';
 
+import { User } from '../USER_INFO';
+
+//Creates a new user
+
+
 class App extends React.Component {
   
 constructor(props){
@@ -19,7 +24,7 @@ constructor(props){
 }
 
 componentDidMount(){
-  const url = "http://localhost:4000/basketballDB/players"
+  const url = "http://localhost:4001/basketballDB/players"
   axios.get(url)
     .then((reponse) => {
       this.setState({
