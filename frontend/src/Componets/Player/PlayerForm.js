@@ -8,7 +8,7 @@ const skillsArray = ["shooting", "speed", "offense", "defense"]
 class PlayerForm extends React.Component {
     submitPlayer(event){
         event.preventDefault()
-        axios.post("http://localhost:4000/players",{
+        axios.post("http://localhost:4001/players",{
             firstName: this.refs.firstName.value,
             lastName: this.refs.lastName.value,
             email: this.refs.email.value,
