@@ -37,16 +37,7 @@ componentDidMount(){
       console.log(error);
     })
 
-    const url2 = "http://localhost:4001/basketballDB/users"
-  axios.get(url2)
-    .then((reponse) => {
-      this.setState({
-        players: reponse.data
-      })
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
+    
 }
 
 updateCurrentPlayer(item){

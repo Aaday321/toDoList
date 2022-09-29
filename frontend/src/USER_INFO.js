@@ -6,19 +6,33 @@ class User{
     }
 }
 
-
+var responsable
 
 export const MakeNewUser = () =>{
 
-    const myUser = new User("THIS WORKS!")
 
-    axios({
-        method: 'post',
-        url: 'http://localhost:4001/users',
-        data: {
-          name: myUser.name
-        }
-      });
+    axios.get("http://localhost:4001/users/6334ee7c199dbe76b0e814c1")
+    .then((reponse) => {
+        responsable = reponse
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+
+    if (responsable === null){
+        const myUser = new User("THIS ALSO WORKS!")
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:4001/users',
+            data: {
+              name: myUser.name
+            }
+          });
+    }
+        console.log(responsable);
+
+    
 
 
 /*
