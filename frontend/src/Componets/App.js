@@ -5,11 +5,13 @@ import './App.css';
 import PlayerForm from './Player/PlayerForm';
 import PlayerList from './Player/PlayerList';
 import PlayerSingle from './Player/PlayerSingle';
+import { MakeNewUser } from "../USER_INFO"
 
-import { User } from '../USER_INFO';
+
 
 //Creates a new user
-
+MakeNewUser()
+console.log("EXECUTED!!!");
 
 class App extends React.Component {
   
@@ -26,6 +28,17 @@ constructor(props){
 componentDidMount(){
   const url = "http://localhost:4001/basketballDB/players"
   axios.get(url)
+    .then((reponse) => {
+      this.setState({
+        players: reponse.data
+      })
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+
+    const url2 = "http://localhost:4001/basketballDB/users"
+  axios.get(url2)
     .then((reponse) => {
       this.setState({
         players: reponse.data
