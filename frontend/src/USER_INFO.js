@@ -1,4 +1,7 @@
 import axios from "axios"
+import { useState, useEffect } from "react"
+
+
 
 class User{
     constructor(name){
@@ -6,21 +9,38 @@ class User{
     }
 }
 
-var responsable
+
 
 export const MakeNewUser = () =>{
 
+    const [responsable, setResponsable] = useState(null)
+    
 
-    axios.get("http://localhost:4001/users/6334ee7c199dbe76b0e814c1")
+    axios.get("http://localhost:4001/users/63358d06f5c89f45147acef6")
     .then((reponse) => {
-        responsable = reponse
+        setResponsable(reponse.data)
+        console.log(reponse.data);
     })
     .catch((error)=>{
       console.log(error);
     })
 
-    if (responsable === null){
-        const myUser = new User("THIS ALSO WORKS!")
+    
+    useEffect(()=>{
+        console.log(responsable);
+        postUser(responsable)
+    }, [responsable])
+
+    
+
+return(
+    <h1>MAKE NEW USER</h1>
+)
+}
+
+const postUser = (arg) =>{
+    if (arg.name != "New User"){
+        const myUser = new User("I'ma user")
 
         axios({
             method: 'post',
@@ -30,20 +50,4 @@ export const MakeNewUser = () =>{
             }
           });
     }
-        console.log(responsable);
-
-    
-
-
-/*
-    axios.post("http://localhost:4001/users",{
-        name: myUser.name
-    })
-    .then((response) =>{
-        console.log(response);
-    })
-    .catch((error) =>{
-        console.log(error);
-    })
-    */
 }

@@ -10,7 +10,7 @@ import { MakeNewUser } from "../USER_INFO"
 
 
 //Creates a new user
-MakeNewUser()
+//MakeNewUser()
 console.log("EXECUTED!!!");
 
 class App extends React.Component {
@@ -48,30 +48,12 @@ updateCurrentPlayer(item){
 
   render(){
     
-    return (
-      <div className="container-fluid">
-
-        <div className="row">
-           <nav>
-              <div className="nav-wrapper blue green">
-                <a href="#" className="brand-logo">Basketball Management</a>
-                
-              </div>
-            </nav>
-        </div>
-
-        <div className="row">
-          <div className="col s3"><PlayerList 
-            updateCurrentPlayer={this.updateCurrentPlayer}
-            players={this.state.players}
-            /></div>
-          <div className="col s9"><PlayerSingle player={this.state.currentPlayer}/></div>
-        </div>
-
+    return(
+      <div>
+        <MakeNewUser/>
         <div className="row">
           <div className="col s12"><PlayerForm/></div>
         </div>
-
       </div>
     );
   }
