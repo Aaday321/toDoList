@@ -1,0 +1,15 @@
+curl --request POST \
+  
+'https://data.mongodb-api.com/app/https://data.mongodb-api.com/app/data-yxiir/endpoint/data/v1/endpoint/data/v1/action/insertOne' 
+\                                
+  --header 'Content-Type: application/json' \                                           
+  --header 'api-key: 6XTLIN2dH4JSAaeQ9bQkKegN8wj9F1BfviB3nyObRfg9Ln3nNo6sZVKgUM6mYEIk' \
+  --data-raw '{                
+      "dataSource": "Cluster0",    
+      "database": "learn-data-api",
+      "collection": "people",
+      "document": {           
+        "name": "John Sample",
+        "age": 42
+      }
+  }'
