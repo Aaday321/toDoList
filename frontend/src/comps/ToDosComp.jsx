@@ -6,7 +6,7 @@ function ToDosComp({state, deleteMe}) {
   return (
     <>
         <ul className='full-list'>
-            {state.length>0 && state.map((i)=><ToDoComp key={i.id} note={i.note} id={i.id} deleteMe={deleteMe}/>) }
+            {state.length>0 && state.map((i)=><ToDoComp key={i._id || i.myId} note={i.note} _id={i._id} deleteMe={deleteMe}/>) }
         </ul>
     </>
   )

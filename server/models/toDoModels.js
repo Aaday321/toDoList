@@ -4,12 +4,11 @@ import mongoose from "mongoose"
 
 export const ToDoSchema = new mongoose.Schema({
 
-    title: {
+    note: {
       type: String
     },
-    content: {
-      type: String,
-      required: false
+    myId:{
+      type: String
     },
     createdDate: {
         type: Date,
