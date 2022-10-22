@@ -1,156 +1,122 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/*
-  Alex's CSS!!
-*/
-h2 {
-  background :linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
-padding: 30px 40px;
-color: white;
-text-align: center;
-}
-.B{
-  -webkit-appearance: none;
--moz-appearance: none;
--ms-appearance: none;
--o-appearance: none;
-appearance: none;
-position: relative;
-top: 13.33333px;
-right: 0;
-bottom: 0;
-left: 0;
-height: 40px;
-width: 40px;
-transition: all 0.15s ease-out 0s;
-background: #cbd1d8;
-border: none;
-color: #fff;
-cursor: pointer;
-display: inline-block;
-margin-right: 0.5rem;
-outline: none;
-position: relative;
-z-index: 1000;}
-.B :hover{
-background-color: #0070f8;
-}
-.B :checked {
-background: #40e0d0;
-}
-.B :checked:before{ 
-width: 40px;
-height: 40px;
-display:flex;
-content: '\f00c';
-font-size: 25px;
-font-weight:bold;
-position: absolute;
-align-items:center;
-justify-content:center;
-font-family:'Font Awesome 5 Free';}
-.B:checked::after {
--webkit-animation: click-wave 0.65s;
--moz-animation: click-wave 0.65s;
-animation: click-wave 0.65s;
-background: #40e0d0;
-content: '';
-display: block;
-position: relative;
-z-index: 100;
-}
-
-
-
-
-
-Body {
-  text-align: center;
-
-  background-color: black;
- 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-ul{
-  list-style-type: none;
-color: rgb(0, 238, 238);
-font-size: medium;
-
-}
-
-
-li {
-  
-position: relative;
-padding: -10px 2px -20px 20px;
-background: rgb(15, 14, 14);
-font-size: 18px;
-transition: 0.2s;
-justify-content: center;
-display: flex;
-}
-div.A.Q {
-background-color: white;
-padding: 10px;
-border:20px solid white
-}
-
 
 button{
- 
-  display: inline-block;
-              outline: none;
-              cursor: pointer;
-              font-size: 16px;
-              line-height: 20px;
-              font-weight: 600;
-              border-radius: 8px;
-              padding: 14px 24px;
-              border: none;
-              transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
-              background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
-              color: #fff;
-          
+  cursor: pointer;
 }
-div.A{
-  margin-left: 3%;
-  width: auto;
 
+body{
+  padding: 0;
+  margin: 0;
+  background-color: rgb(219, 225, 208);
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: sans-serif;
+}
+
+.box{
+  border-radius: 50px;
+  min-width: 500px;
+  padding: 2.5rem;
+}
+
+h1, h2{
+  margin: 0;
+  padding: 0;
+}
+
+.form{
+  width: 100%;
+  display: flex;
+  margin-block: 2rem;
+
+}
+
+.form input{
+  flex-grow: 1;
+  padding: .5rem;
+  padding-left: 1.6rem;
+  font-size: 1rem;
+  border-radius: 150px 0 0 150px;
+  border: none;
+  background: #dbe1d0;
+  box-shadow: inset 5px 5px 7px #c7cdbd,
+              inset -5px -5px 7px #eff5e3;
+            
+}
+
+.form input:focus{
+  outline: none;
+
+  background: #dbe1d0;
+  box-shadow: inset 5px 5px 10px #a1a19e,
+              inset -5px -5px 10px #ffffff;
+}
+
+.form button{
+  border-radius: 0 150px 150px 0;
+  border: none;
+  padding: 10px;
+  flex: 0 0 5rem;
+  font-size: 1.2rem;
+  background: linear-gradient(145deg, #c9e4ff, #a9c0dd);
+  box-shadow:  5px 5px 20px #8c8d8b,
+              0px -5px 20px #ffffff;
+}
+
+.form button:active{
+  background: #bcd5f5;
+  box-shadow: inset 14px 14px 28px #9aafc9,
+            inset -14px -14px 28px #defbff;
+}
+
+.card{
+  width: 100%;
+  font-size: 1.25rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-radius: 25px;
+  overflow: hidden;
+  padding-left: 2rem;
+  background: linear-gradient(145deg, #eff0eb, #c9cac6);
+  border-radius: 30px;
+  background: linear-gradient(145deg, #eff0eb, #c9cac6);
+  box-shadow:  5px 5px 20px #8c8d8b,
+              -5px -5px 20px #ffffff;
+    
+}
+.card button{
+  display: block;
+  border: none;
+  flex-basis: 12%;
+  height: 80px;
+  padding: .8rem;
+  color: rgb(137, 0, 0);
+  background: linear-gradient(145deg, #ffb9c8, #e69ca8);
+  box-shadow:  13px 13px 57px #8c8d8b,
+  -13px -13px 57px #ffffff;
+}
+
+.card button:active{
+background: #ffadbb;
+box-shadow: inset 5px 5px 10px #d18e99,
+            inset -5px -5px 10px #ffccdd;
+}
+
+
+/* MEDIA Q's */
+@media(max-width:550px){
+  .box{
+    min-width: 350px;
+  }
 }

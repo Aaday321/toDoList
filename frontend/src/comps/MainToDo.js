@@ -8,13 +8,17 @@ var currentID
 const Test = new TestAPI()
 Test.makeToDos()
 
-const URL = `http://localhost:4010/toDoItems/:ToDoId`
+const URL = (id)=>{
+    return `http://localhost:4010/toDoItems/${id}`
+}
 class TODO_COMP extends React.Component {
 
-    /*
+
 
     handleDelete(id){
-        axios.delete(URL,{ params: { id: id }   })
+        
+        console.log("clicked");
+        axios.delete(URL(id))
         .then(res => {
             console.log(res);   
         })
@@ -22,7 +26,7 @@ class TODO_COMP extends React.Component {
             console.log(error);
         }) 
     }
-    
+    /*
     removeToDo(event){
         event.preventDefault()
     
@@ -40,9 +44,9 @@ class TODO_COMP extends React.Component {
             {this.props.toDos.map((i) => (
                 <li>
                 <input
-                    className="btn waves-effect waves-light"
+                    className="checkBox"
                     type="checkbox"
-                    nme="action"
+                    nme="action2"
                 />
                 <label key={i._id}>{i.content}</label>
                 </li>
