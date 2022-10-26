@@ -16,16 +16,26 @@ function App(){
   const [state, setState] = useState([])
 
   const fetchList = () =>{
+    
     axios.get(getEndPoint)
       .then((reponse) => {
+
         setState(reponse.data)
+        
       })
       .catch((error)=>{
+
+        if(state.length >0 ){
+          window.alert(error)
+        }
         console.log(error);
+
       })
   }
   
   useEffect(fetchList,[state])
+
+
   const valid = (str)=>{
     if(!str) return false;
     
@@ -37,12 +47,22 @@ function App(){
   
   const addToDos = (param) =>{
     if(valid(param) && !state.includes(param)){
-      const newNote = {note: param, myId: uuidv4()}
+
+      const newNote = {note: param}
+
+      
       axios.post(getEndPoint, newNote)
         .then((res)=>{
-          setState([...state, newNote])
+          
+          fetchList()
+
         })
-        .catch(err=>console.log(err))
+        .catch((err)=>{
+          console.log(err)
+          if(err == "AxiosError: Network Error"){
+            window.alert("No connection to server")
+          }
+        })
     }else{
       console.log("Invalid entry");
     }
@@ -52,7 +72,6 @@ function App(){
   const deleteMe = (_id) =>{
     axios.delete(getEndPoint+_id)
       .then(res => {
-          console.log(res);
           fetchList()   
       })
       .catch((error) =>{

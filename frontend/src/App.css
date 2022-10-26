@@ -36,7 +36,7 @@ h1, h2{
   width: 100%;
   display: flex;
   margin-block: 2rem;
-
+  border-radius: 150px;
 }
 
 .form input{
@@ -67,8 +67,9 @@ h1, h2{
   flex: 0 0 5rem;
   font-size: 1.2rem;
   background: linear-gradient(145deg, #c9e4ff, #a9c0dd);
+
   box-shadow:  5px 5px 20px #8c8d8b,
-              0px -5px 20px #ffffff;
+  0px -5px 20px #ffffff;
 }
 
 .form button:active{
