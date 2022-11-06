@@ -16,7 +16,6 @@ export default function InputComp({addToDos}) {
   return (
     <form className='form' onSubmit={(e)=>handleSubmit(e)}>
       <input
-
         value={text}
         onChange={(e)=>handleChange(e)}
         type="text" />

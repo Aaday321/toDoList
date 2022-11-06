@@ -5,36 +5,38 @@ import ToDosComp from './comps/ToDosComp';
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css"
 import axios from 'axios';
+import Alerts from './comps/Alerts';
 
 
 function App(){
+  const allNotesArr = [];
 
 
 
   const getEndPoint = "http://localhost:4010/toDoItems/"
-
+  const [alerts, setAlerts]=useState([])
   const [state, setState] = useState([])
+
+  const makeAlert = (type, message)=>{
+    let uuid = uuidv4()
+    setAlerts(  [...alerts, {type, message, uuid:uuid}]  );
+    setTimeout(()=>setAlerts(alerts.filter(()=>(alert.uuid !== uuid))),4000);
+  }
 
   const fetchList = () =>{
     
     axios.get(getEndPoint)
       .then((reponse) => {
-
         setState(reponse.data)
-        
       })
       .catch((error)=>{
-
-        if(state.length >0 ){
-          window.alert(error)
-        }
-        console.log(error);
-
+        
+        makeAlert("Error", error+" 🤒")
+        
       })
   }
   
-  useEffect(fetchList,[state])
-
+  useEffect(fetchList,[])
 
   const valid = (str)=>{
     if(!str) return false;
@@ -46,7 +48,9 @@ function App(){
   }
   
   const addToDos = (param) =>{
-    if(valid(param) && !state.includes(param)){
+
+    if(valid(param) &&
+      !state.map((item)=>item.note.toLowerCase()).includes(param.toLowerCase())){
 
       const newNote = {note: param}
 
@@ -54,17 +58,21 @@ function App(){
       axios.post(getEndPoint, newNote)
         .then((res)=>{
           
-          fetchList()
+          fetchList();
 
         })
         .catch((err)=>{
+
           console.log(err)
           if(err == "AxiosError: Network Error"){
             window.alert("No connection to server")
           }
+
         })
     }else{
-      console.log("Invalid entry");
+      
+      makeAlert("Error", "Invalid Entry")
+
     }
     
   }
@@ -72,21 +80,26 @@ function App(){
   const deleteMe = (_id) =>{
     axios.delete(getEndPoint+_id)
       .then(res => {
-          fetchList()   
+
+        fetchList();
+
       })
       .catch((error) =>{
-          console.log(error);
+          makeAlert("Error", "POST ALERT 😵‍💫")
       }) 
   }
 
   return(
+    <>
+    <Alerts/>
     <div className='box'>
+      
       <h1>To Do List!</h1>
       <h3>Get it done.</h3>
       <InputComp addToDos={addToDos}/>
       <ToDosComp state={state} deleteMe={deleteMe}/>
     </div>
-   
+   </>
   )
 
 }

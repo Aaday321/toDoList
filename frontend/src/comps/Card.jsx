@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export default function Card(props) {
 
-  useEffect(()=>console.log(props),[])
+  //useEffect(()=>console.log(props),[])
 
     const {note, _id, myId, deleteMe} = props
 
